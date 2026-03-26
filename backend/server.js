@@ -25,6 +25,22 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model("User", UserSchema);
 
 /* =========================
+   ⚙️ ONBOARDING SCHEMA
+========================= */
+const OnboardingSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
+  workType: String,
+  usage: [String],
+  spaceName: String,
+  issueTypes: [String],
+  workflow: [String]
+});
+const Onboarding = mongoose.model("Onboarding", OnboardingSchema);
+
+/* =========================
    📝 ISSUE SCHEMA
 ========================= */
 const IssueSchema = new mongoose.Schema({
@@ -153,6 +169,44 @@ app.post("/forgot-password", async (req, res) => {
   }
 });
 
+/* =========================
+   ⚙️ ONBOARDING APIs
+========================= */
+
+/* Save Onboarding */
+app.post("/onboarding", async (req, res) => {
+  try {
+    const { userId, data } = req.body;
+
+    const onboarding = new Onboarding({
+      userId,
+      ...data
+    });
+
+    await onboarding.save();
+
+    res.json({ message: "Onboarding Saved" });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/* Get Onboarding */
+app.get("/onboarding/:userId", async (req, res) => {
+  try {
+    const config = await Onboarding.findOne({
+      userId: req.params.userId
+    });
+
+    res.json(config);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/* ========================= */
 /* =========================
    📝 ISSUE APIs
 ========================= */

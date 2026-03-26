@@ -23,16 +23,27 @@ const handleLogin = async () => {
 
     alert(res.data.message);
 
-    // ✅ PUT IT HERE
     if (res.data.message === "Login Success") {
-  const config = localStorage.getItem("config");
+  const userId = res.data.userId;
 
-  if (!config) {
-    // 🔥 First time user → onboarding
-    navigate("/onboarding");
-  } else {
-    // 🔥 Already configured → dashboard
-    navigate("/dashboard");
+  localStorage.setItem("userId", userId);
+
+  // 🔥 Check onboarding from backend
+  try {
+    const response = await axios.get(
+      `http://localhost:5000/onboarding/${userId}`
+    );
+
+    if (!response.data) {
+      // ❌ No onboarding found
+      navigate("/onboarding");
+    } else {
+      // ✅ Already onboarded
+      navigate("/dashboard");
+    }
+
+  } catch (err) {
+    alert("Error checking onboarding");
   }
 }
 

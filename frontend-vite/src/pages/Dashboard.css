@@ -1,0 +1,143 @@
+/* styles/dashboard.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* LAYOUT */
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #1f2a44;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  color:white;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.sidebar li:hover {
+  background: #2f3b5c;
+}
+.sidebar li.active {
+  background: #0052cc;
+  color: white;
+}
+
+/* MAIN AREA */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+  padding: 15px 20px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.create-btn {
+  background: #0052cc;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+}
+
+/* BOARD */
+.board {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  background: #f4f5f7;
+  height: 100%;
+  overflow-x: auto;
+}
+
+/* COLUMN */
+.column {
+  background: #ebecf0;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 250px;
+}
+
+.column h4 {
+  margin-bottom: 10px;
+}
+
+/* BUG CARD */
+.bug-card {
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.bug-card h5 {
+  margin: 0;
+}
+
+/* PRIORITY COLORS */
+.priority {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.priority.low {
+  color: green;
+}
+
+.priority.medium {
+  color: orange;
+}
+
+.priority.high {
+  color: red;
+}
+
+.priority.critical {
+  color: darkred;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.empty-state h3 {
+  margin-bottom: 10px;
+}
+
+.empty-state button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #0052cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
