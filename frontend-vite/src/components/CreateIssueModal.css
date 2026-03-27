@@ -1,0 +1,88 @@
+/* OVERLAY */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.card {
+  width: 550px;
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* STEP */
+.step-indicator {
+  text-align: right;
+  font-size: 12px;
+  color: #6b778c;
+  margin-bottom: 10px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* OPTION */
+.option {
+  padding: 12px;
+  border: 1px solid #dfe1e6;
+  border-radius: 8px;
+  background: #fafbfc;
+  cursor: pointer;
+}
+
+.option.active {
+  background: #e9f2ff;
+  border-color: #0052cc;
+  color: #0052cc;
+}
+
+/* INPUT */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 16px;
+  border: none;
+  background: #0052cc;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #003f9e;
+}
+
+/* SUBMIT */
+.submit-btn {
+  width: 100%;
+  margin-top: 10px;
+  background: #0052cc;
+}

@@ -9,46 +9,46 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+const ADMIN_EMAIL = "admin@gmail.com".toLowerCase();
+const ADMIN_PASSWORD = "admin123";
 
 const handleLogin = async () => {
+  console.log("Entered:", email, password);
+console.log("Expected:", ADMIN_EMAIL, ADMIN_PASSWORD);
   if (!email || !password) {
     alert("Please enter email and password");
     return;
   }
+
+  // ✅ ADMIN LOGIN
+  if (
+  email.trim().toLowerCase() === ADMIN_EMAIL &&
+  password.trim() === ADMIN_PASSWORD
+) {
+    console.log("Admin login success");
+
+    localStorage.setItem("role", "admin");
+    navigate("/admin");
+    return;
+  }
+
+  // 👤 USER LOGIN
   try {
     const res = await axios.post("http://localhost:5000/login", {
       email,
       password
     });
 
-    alert(res.data.message);
-
     if (res.data.message === "Login Success") {
-  const userId = res.data.userId;
+      localStorage.setItem("role", "user");
+      localStorage.setItem("userId", res.data.userId);
 
-  localStorage.setItem("userId", userId);
-
-  // 🔥 Check onboarding from backend
-  try {
-    const response = await axios.get(
-      `http://localhost:5000/onboarding/${userId}`
-    );
-
-    if (!response.data) {
-      // ❌ No onboarding found
-      navigate("/onboarding");
-    } else {
-      // ✅ Already onboarded
       navigate("/dashboard");
     }
 
   } catch (err) {
-    alert("Error checking onboarding");
-  }
-}
-
-  } catch (err) {
-    alert("Server not running or connection error");
+    console.error(err);
+    alert("Server error");
   }
 };
   return (

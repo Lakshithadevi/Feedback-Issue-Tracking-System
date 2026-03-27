@@ -1,0 +1,101 @@
+/* OVERLAY */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 43, 234, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CHAT BOX */
+.chat-modal {
+  width: 420px;
+  height: 500px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(29, 161, 210, 0.2);
+}
+
+/* HEADER */
+.chat-header {
+  background: linear-gradient(135deg, #1da1d2, #0d8ecf);
+  color: white;
+  padding: 12px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* CHAT AREA */
+.chat-box {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f7fbfe;
+}
+
+/* MESSAGE */
+.chat-msg {
+  max-width: 70%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* USER MESSAGE */
+.chat-msg.user {
+  background: linear-gradient(135deg, #1da1d2, #0d8ecf);
+  color: white;
+  margin-left: auto;
+}
+
+/* OTHER MESSAGE */
+.chat-msg.other {
+  background: #eef3f7;
+  color: #333;
+}
+
+/* INPUT AREA */
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #d1d5db;
+}
+
+/* INPUT */
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1.5px solid #cfe8f3;
+}
+
+/* BUTTON */
+.chat-input button {
+  margin-left: 8px;
+  background: linear-gradient(135deg, #1da1d2, #0d8ecf);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  box-shadow: 0 4px 10px rgba(29, 161, 210, 0.3);
+}

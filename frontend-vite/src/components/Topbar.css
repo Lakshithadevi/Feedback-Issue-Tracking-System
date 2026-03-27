@@ -1,0 +1,25 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: rgb(227, 227, 227);
+  border-bottom: 1px solid #ddd;
+  color: #1da1d2;
+  font-size: large;
+}
+
+.topbar input {
+  padding: 6px;
+  margin-right: 10px;
+}
+
+.topbar button {
+  background: #1da1d2;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+.topbar button:hover {
+  background: #0052cc;
+}

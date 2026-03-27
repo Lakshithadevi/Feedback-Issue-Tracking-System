@@ -2,53 +2,59 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import KanbanBoard from "../components/KanbanBoard";
-import CreateIssueModal from "../components/CreateIssueModel";
-import { useLocation } from "react-router-dom";
+import CreateIssueModal from "../components/CreateIssueModal";
+import IssueChatModal from "../components/IssueChatModal";
 import "./Dashboard.css";
 
 export default function Dashboard() {
   const [config, setConfig] = useState(null);
   const [issues, setIssues] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const location = useLocation();
+  const [selectedIssue, setSelectedIssue] = useState(null);
+
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-  if (location.pathname === "/create") {
-    setShowModal(true);
-  } else {
-    setShowModal(false);
-  }
-}, [location]);
-
-  useEffect(() => {
-    const storedConfig = JSON.parse(localStorage.getItem("config"));
-    setConfig(storedConfig);
-
-    const storedIssues = JSON.parse(localStorage.getItem("issues")) || [];
-    setIssues(storedIssues);
+    setConfig(JSON.parse(localStorage.getItem("config")));
+    setIssues(JSON.parse(localStorage.getItem("issues")) || []);
   }, []);
 
-  const handleCreateIssue = (newIssue) => {
-    const updated = [...issues, newIssue];
+  const userIssues = issues.filter(
+    (i) => i.createdBy === userId || i.assignedTo === userId
+  );
+
+  const handleCreateIssue = (issue) => {
+    const updated = [...issues, issue];
     setIssues(updated);
     localStorage.setItem("issues", JSON.stringify(updated));
   };
 
-  if (!config) return <h2>Loading...</h2>;
+  if (!config) return <h2 className="loading">Loading Dashboard...</h2>;
 
   return (
     <div className="dashboard">
       <Sidebar />
 
-      <div className="main">
+      <div className="dashboard-main">
         <Topbar
           spaceName={config.spaceName}
           onCreate={() => setShowModal(true)}
         />
 
-        <KanbanBoard workflow={config.workflow} issues={issues} />
+        {/* BOARD */}
+        <div className="board-container">
+          <KanbanBoard workflow={config.workflow} issues={userIssues} />
+        </div>
 
-        {/* MODAL */}
+        {/* FLOAT BUTTON */}
+        <button
+          className="floating-btn"
+          onClick={() => setShowModal(true)}
+        >
+          + New Issue
+        </button>
+
+        {/* CREATE MODAL */}
         {showModal && (
           <CreateIssueModal
             onClose={() => setShowModal(false)}
@@ -56,7 +62,15 @@ export default function Dashboard() {
               handleCreateIssue(issue);
               setShowModal(false);
             }}
-            workflow={config.workflow}
+          />
+        )}
+
+        {/* CHAT */}
+        {selectedIssue && (
+          <IssueChatModal
+            issue={selectedIssue}
+            onClose={() => setSelectedIssue(null)}
+            updateIssues={setIssues}
           />
         )}
       </div>

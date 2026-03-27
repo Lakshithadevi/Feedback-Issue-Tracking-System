@@ -169,20 +169,9 @@ export default function Onboarding({ onComplete }) {
 
             <button
   className="submit-btn"
-  onClick={async () => {
-    try {
-      const userId = localStorage.getItem("userId");
-
-      await axios.post("http://localhost:5000/onboarding", {
-        userId,
-        data
-      });
-
-      navigate("/dashboard");
-
-    } catch (err) {
-      alert("Error saving onboarding");
-    }
+  onClick={() => {
+    localStorage.setItem("config", JSON.stringify(data));
+    navigate("/dashboard");
   }}
 >
   Finish Setup

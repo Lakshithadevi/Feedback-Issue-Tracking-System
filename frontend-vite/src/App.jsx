@@ -6,6 +6,7 @@ import SignupPage from "./pages/SignupPage";
 import Dashboard from "./pages/Dashboard";
 import ForgotPasswordPage from "./pages/forgotPasswordPage";
 import Onboarding from "./pages/Onboarding";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
 
@@ -23,6 +24,16 @@ function App() {
 <Route path="/create" element={<Dashboard />} />
 <Route path="/my-issues" element={<Dashboard />} />
 <Route path="/reports" element={<Dashboard />} />
+
+
+<Route
+  path="/admin"
+  element={
+    localStorage.getItem("role") === "admin"
+      ? <AdminDashboard />
+      : <Navigate to="/" />
+  }
+/>
         {/* ONBOARDING */}
         <Route path="/onboarding" element={<Onboarding />} />
 
