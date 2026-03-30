@@ -26,7 +26,7 @@ const handleSignup = async () => {
   }
 
   try {
-    const res = await axios.post("http://localhost:5000/signup", {
+    const res = await axios.post("https://feedback-issue-tracking-system.onrender.com/signup", {
       name,
       email,
       password

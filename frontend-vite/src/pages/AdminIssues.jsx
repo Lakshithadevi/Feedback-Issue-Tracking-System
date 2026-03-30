@@ -18,7 +18,7 @@ export default function AdminIssues() {
   ========================= */
   const loadIssues = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/issues");
+      const res = await fetch("https://feedback-issue-tracking-system.onrender.com/api/issues");
       const data = await res.json();
       setIssues(data);
     } catch (err) {
@@ -31,7 +31,7 @@ export default function AdminIssues() {
   ========================= */
   const loadAssignees = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/assignees");
+      const res = await fetch("https://feedback-issue-tracking-system.onrender.com/api/assignees");
       const data = await res.json();
       setAssignees(data);
     } catch (err) {
@@ -44,7 +44,7 @@ export default function AdminIssues() {
   ========================= */
   const updateStatus = async (id, status) => {
     try {
-      await fetch(`http://localhost:5000/api/issues/${id}`, {
+      await fetch(`https://feedback-issue-tracking-system.onrender.com/api/issues/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),
@@ -61,7 +61,7 @@ export default function AdminIssues() {
   ========================= */
   const assignUser = async (id, assigneeId) => {
     try {
-      await fetch(`http://localhost:5000/api/issues/${id}/assign`, {
+      await fetch(`https://feedback-issue-tracking-system.onrender.com/api/issues/${id}/assign`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ assignedTo: assigneeId }),

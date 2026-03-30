@@ -14,8 +14,8 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const userRes = await axios.get("http://localhost:5000/api/users");
-      const issueRes = await axios.get("http://localhost:5000/api/issues");
+      const userRes = await axios.get("https://feedback-issue-tracking-system.onrender.com/api/users");
+      const issueRes = await axios.get("https://feedback-issue-tracking-system.onrender.com/api/issues");
 
       setUsers(userRes.data || []);
       setIssues(issueRes.data || []);

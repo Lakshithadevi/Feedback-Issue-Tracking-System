@@ -17,7 +17,7 @@ const ForgotPasswordPage = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/forgot-password", {
+      const res = await axios.post("https://feedback-issue-tracking-system.onrender.com/forgot-password ", {
         email,
         newPassword
       });

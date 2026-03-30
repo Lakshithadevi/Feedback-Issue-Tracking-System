@@ -16,7 +16,7 @@ export default function Assignees() {
 
   const loadAssignees = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/assignees");
+    const res = await fetch("https://feedback-issue-tracking-system.onrender.com/api/assignees");
     const data = await res.json();
 
     console.log("ASSIGNEES FROM API:", data); // 👈 add this
@@ -36,14 +36,14 @@ export default function Assignees() {
     try {
       if (editId) {
         // UPDATE
-        await fetch(`http://localhost:5000/api/assignees/${editId}`, {
+        await fetch(`https://feedback-issue-tracking-system.onrender.com/api/assignees/${editId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, department })
         });
       } else {
         // ADD
-        await fetch("http://localhost:5000/api/assignees", {
+        await fetch("https://feedback-issue-tracking-system.onrender.com/api/assignees", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, department })
@@ -72,7 +72,7 @@ export default function Assignees() {
   // DELETE
   const deleteAssignee = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/assignees/${id}`, {
+      await fetch(`https://feedback-issue-tracking-system.onrender.com/api/assignees/${id}`, {
         method: "DELETE"
       });
       loadAssignees();

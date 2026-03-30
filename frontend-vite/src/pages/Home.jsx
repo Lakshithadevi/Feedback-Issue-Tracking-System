@@ -11,7 +11,7 @@ export default function Home() {
 
   // ✅ FIXED API CALL
   useEffect(() => {
-    fetch("http://localhost:5000/api/issues")
+    fetch("https://feedback-issue-tracking-system.onrender.com/api/issues")
       .then((res) => res.json())
       .then((data) => setIssues(data))
       .catch((err) => console.error("Fetch error:", err));

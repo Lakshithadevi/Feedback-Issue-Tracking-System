@@ -4,7 +4,7 @@ import IssueChatModal from "../components/IssueChatModal";
 import { useLocation } from "react-router-dom";
 import "./Issues.css";
 
-const API = "http://localhost:5000/api";
+const API = "https://feedback-issue-tracking-system.onrender.com/api";
 
 export default function Issues() {
   const [issues, setIssues] = useState([]);

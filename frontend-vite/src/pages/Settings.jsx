@@ -22,7 +22,7 @@ export default function Settings() {
 
   // ✅ FETCH USER
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${userId}`)
+    fetch(`https://feedback-issue-tracking-system.onrender.com/api/users/${userId}`)
       .then(res => res.json())
       .then(data => {
         setUser({
@@ -37,7 +37,7 @@ export default function Settings() {
   // ✅ SAVE PROFILE
   const handleSave = async () => {
     try {
-      await fetch(`http://localhost:5000/users/${userId}`, {
+      await fetch(`https://feedback-issue-tracking-system.onrender.com/api/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -58,7 +58,7 @@ export default function Settings() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/send-otp", {
+      const res = await fetch("https://feedback-issue-tracking-system.onrender.com/send-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -86,7 +86,7 @@ export default function Settings() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/verify-otp", {
+      const res = await fetch("https://feedback-issue-tracking-system.onrender.com/verify-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -132,7 +132,7 @@ export default function Settings() {
   // ✅ DELETE ACCOUNT
   const deactivateAccount = () => {
     if (window.confirm("Are you sure?")) {
-      fetch(`http://localhost:5000/users/${userId}`, {
+      fetch(`https://feedback-issue-tracking-system.onrender.com/api/users/${userId}`, {
         method: "DELETE"
       }).then(() => {
         localStorage.clear();

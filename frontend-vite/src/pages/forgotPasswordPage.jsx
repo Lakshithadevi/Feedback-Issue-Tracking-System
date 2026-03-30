@@ -33,7 +33,7 @@ const ForgotPasswordPage = () => {
     if (!email) return alert("Enter email");
 
     try {
-      const res = await axios.post("http://localhost:5000/send-otp", {
+      const res = await axios.post("https://feedback-issue-tracking-system.onrender.com/send-otp", {
   email,
   type: "reset" // 🔥 VERY IMPORTANT
 });
@@ -60,7 +60,7 @@ const ForgotPasswordPage = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/verify-reset-otp", {
+      const res = await axios.post("https://feedback-issue-tracking-system.onrender.com/verify-reset-otp", {
   email,
   otp,
   newPassword

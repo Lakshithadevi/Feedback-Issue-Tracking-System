@@ -45,7 +45,7 @@ const handleSubmit = async () => {
     };
 
     const res = await axios.post(
-      "http://localhost:5000/api/issues",
+      "https://feedback-issue-tracking-system.onrender.com/api/issues",
       newIssue
     );
 
