@@ -710,3 +710,20 @@ module.exports = router;
 server.listen(5000, () => {
   console.log("🚀 Server + Socket running on port 5000");
 });
+
+/* =========================
+    🏠 LANDING ROUTE (Add this to fix "Not Found")
+========================= */
+app.get("/", (req, res) => {
+  res.send("🚀 Feedback Issue Tracking System Backend is Live and Running!");
+});
+
+/* =========================
+    🚀 SERVER START (Updated for Render)
+========================= */
+// Render assigns a port automatically; this line lets the app find it.
+const PORT = process.env.PORT || 5000; 
+
+server.listen(PORT, () => {
+  console.log(`🚀 Server + Socket running on port ${PORT}`);
+});
