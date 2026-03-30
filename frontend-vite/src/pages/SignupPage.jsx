@@ -26,7 +26,7 @@ const handleSignup = async () => {
   }
 
   try {
-    const res = await axios.post("https://feedback-issue-tracking-system.onrender.com/api/users", {
+    const res = await axios.post("https://feedback-issue-tracking-system.onrender.com/users", {
       name,
       email,
       password

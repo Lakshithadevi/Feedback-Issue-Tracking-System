@@ -16,7 +16,7 @@ const Users = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("https://feedback-issue-tracking-system.onrender.com/api/users");
+      const res = await axios.get("https://feedback-issue-tracking-system.onrender.com//users");
       setUsers(res.data || []);
     } catch (err) {
       console.log("Error:", err);
@@ -28,7 +28,7 @@ const Users = () => {
     if (!window.confirm("Are you sure to delete this user?")) return;
 
     try {
-      await axios.delete(`https://feedback-issue-tracking-system.onrender.com/api/users/${id}`);
+      await axios.delete(`https://feedback-issue-tracking-system.onrender.com/users/${id}`);
       fetchUsers();
     } catch (err) {
       console.log(err);
@@ -53,7 +53,7 @@ const Users = () => {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `https://feedback-issue-tracking-system.onrender.com/api/users/${editUser}`,
+        `https://feedback-issue-tracking-system.onrender.com/users/${editUser}`,
         formData
       );
       setEditUser(null);

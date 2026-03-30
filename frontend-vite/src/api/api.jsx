@@ -2,5 +2,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://feedback-issue-tracking-system.onrender.com/api"
+  baseURL: "https://feedback-issue-tracking-system.onrender.com"
 });

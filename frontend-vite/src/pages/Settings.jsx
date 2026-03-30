@@ -22,7 +22,7 @@ export default function Settings() {
 
   // ✅ FETCH USER
   useEffect(() => {
-    fetch(`https://feedback-issue-tracking-system.onrender.com/api/users/${userId}`)
+    fetch(`https://feedback-issue-tracking-system.onrender.com/users/${userId}`)
       .then(res => res.json())
       .then(data => {
         setUser({
@@ -37,7 +37,7 @@ export default function Settings() {
   // ✅ SAVE PROFILE
   const handleSave = async () => {
     try {
-      await fetch(`https://feedback-issue-tracking-system.onrender.com/api/users/${userId}`, {
+      await fetch(`https://feedback-issue-tracking-system.onrender.com/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -132,7 +132,7 @@ export default function Settings() {
   // ✅ DELETE ACCOUNT
   const deactivateAccount = () => {
     if (window.confirm("Are you sure?")) {
-      fetch(`https://feedback-issue-tracking-system.onrender.com/api/users/${userId}`, {
+      fetch(`https://feedback-issue-tracking-system.onrender.com/users/${userId}`, {
         method: "DELETE"
       }).then(() => {
         localStorage.clear();
