@@ -707,9 +707,6 @@ module.exports = router;
 /* =========================
    🚀 SERVER START
 ========================= */
-server.listen(5000, () => {
-  console.log("🚀 Server + Socket running on port 5000");
-});
 
 /* =========================
     🏠 LANDING ROUTE (Add this to fix "Not Found")
